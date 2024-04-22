@@ -29,7 +29,7 @@ set complex_mass_scheme True
 set max_npoint_for_channel 4
 define p = g u c d s b u~ c~ d~ s~ b~
 define j = g u c d s b u~ c~ d~ s~ b~
-import model /project/atlas/users/cvaneck/sacha_repo/HWW-EFT-Interpretation/Madgraph/model/SMEFTatNLO-NLO
+import model /project/atlas/users/cvaneck/SampleGeneration/model/SMEFTatNLO-NLO
 generate p p > h j j $$ w+ w- z, (h > w+ w- > l+ l- vl vl~)
 output -f"""
 
