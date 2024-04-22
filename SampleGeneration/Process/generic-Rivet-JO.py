@@ -22,7 +22,7 @@ from Rivet_i.Rivet_iConf import Rivet_i
 rivet = Rivet_i()
 import os
 # Here you should give the path to your analysis, which is the compile C++ code that will compute histograms out of the events that you gave it.
-rivet.AnalysisPath = '/project/atlas/users/cvaneck/sacha_repo/HWW-EFT-Interpretation/Rivet-Analysis/MY_ANALYSIS'
+rivet.AnalysisPath = '/project/atlas/users/cvaneck/SampleGeneration/MY_ANALYSIS'
 # Here you give the name of the analysis you will use
 rivet.Analyses += ['MY_ANALYSIS']
 rivet.RunName = 'HWWOffshell'
