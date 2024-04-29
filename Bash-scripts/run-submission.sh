@@ -11,7 +11,7 @@ source setupRivet.sh
 dsid="$(basename $PWD)"
 cd ..
 JOname="aMC_gg_to_H_to_WW_2l2v_EFT"
-DATADIR=/project/atlas/users/cvaneck/SampleGeneration/Process/run-${dsid}
+DATADIR=/project/atlas/users/cvaneck/VBF-HWW-EFT/Process/run-${dsid}
 
 for jobid in {1..10}
 do
@@ -27,9 +27,9 @@ Gen_tf.py --ecmEnergy=13000.0 \
     --outputEVNTFile=${dsid}.EVNT.${jobid}.ROOT \
     --maxEvents=10000
 
-mkdir -p /project/atlas/users/cvaneck/SampleGeneration/Process/HWWOffshellEFT-ggF/${dsid}-i-or-q
-mkdir -p /project/atlas/users/cvaneck/SampleGeneration/Process/HWWOffshellEFT-ggF/${dsid}-i-or-q/EVNT
-mv ${dsid}.EVNT.${jobid}.ROOT /project/atlas/users/cvaneck/SampleGeneration/Process/HWWOffshellEFT-ggF/${dsid}-i-or-q/EVNT/${dsid}.EVNT.${jobid}.ROOT
+mkdir -p /project/atlas/users/cvaneck/VBF-HWW-EFT/Process/HWW/${dsid}-i-or-q
+mkdir -p /project/atlas/users/cvaneck/VBF-HWW-EFT/Process/HWW/${dsid}-i-or-q/EVNT
+mv ${dsid}.EVNT.${jobid}.ROOT /project/atlas/users/cvaneck/VBF-HWW-EFT/Process/HWW/${dsid}-i-or-q/EVNT/${dsid}.EVNT.${jobid}.ROOT
 EOF
 
 bsub -J ${dsid}.${jobid} ${DATADIR}/${dsid}/${dsid}.${jobid}/generate_${jobid}.sh
