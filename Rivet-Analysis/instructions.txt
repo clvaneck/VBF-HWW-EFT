@@ -1,0 +1,5 @@
+It is possible to build your own Rivet analysis by following this tutorial:
+https://gitlab.com/hepcedar/rivet/-/tree/master/doc/tutorials 
+
+You can also use the one that I've already built and add the observables you need
+e.g. if you are generating ggF + jets or VBF, you might need to include observables involving the jets

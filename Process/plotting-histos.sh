@@ -9,7 +9,7 @@ OUTPUTDIR=/project/atlas/users/cvaneck/SampleGeneration/Process/plots #Here you 
 # to have access to the rivet commands
 
 rivet-cmphistos /project/atlas/users/cvaneck/SampleGeneration/Process/HWW_ATLAS.yoda.gz:"Title=$ qq \rightarrow H \rightarrow WW, S$:DefaultWeight=Default:Variations=none" \
-           --config /project/atlas/users/cvaneck/SampleGeneration/MY_ANALYSIS/MY_ANALYSIS.plot \
+           --config /project/atlas/users/cvaneck/sacha_repo/HWW-EFT-Interpretation/Rivet-Analysis/MY_ANALYSIS/MY_ANALYSIS.plot \
            --outdir ${OUTPUTDIR} \
            --errs
 

@@ -27,11 +27,19 @@ else: nevents = nevents*safefactor
 process="""
 set complex_mass_scheme True
 set max_npoint_for_channel 4
-define p = g u c d s b u~ c~ d~ s~ b~
+import model /project/atlas/users/cvaneck/sacha_repo/HWW-EFT-Interpretation/Madgraph/model/SMEFTatNLO-NLO
+define p = u d u~ d~
 define j = g u c d s b u~ c~ d~ s~ b~
-import model /project/atlas/users/cvaneck/SampleGeneration/model/SMEFTatNLO-NLO
-generate p p > h j j $$ w+ w- z, (h > w+ w- > l+ l- vl vl~)
+define top = t t~
+generate      p p > h > j j e- ve~ mu+ vm     QCD=0 QED==6  / top
+add process   p p > h > j j e+ ve  mu- vm~    QCD=0 QED==6  / top
+add process   p p > h > j j ta- vt~ mu+ vm    QCD=0 QED==6  / top
+add process   p p > h > j j ta+ vt  mu- vm~   QCD=0 QED==6  / top
+add process   p p > h > j j ta- vt~ e+ ve     QCD=0 QED==6  / top
+add process   p p > h > j j ta+ vt  e- ve~    QCD=0 QED==6  / top
 output -f"""
+
+
 
 process_dir = new_process(process)
 
