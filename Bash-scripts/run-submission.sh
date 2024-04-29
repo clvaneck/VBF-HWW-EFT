@@ -10,7 +10,7 @@ source setupRivet.sh
 
 dsid="$(basename $PWD)"
 cd ..
-JOname="aMC_gg_to_H_to_WW_2l2v_EFT"
+JOname="aMC_gg_H"
 DATADIR=/project/atlas/users/cvaneck/VBF-HWW-EFT/Process/run-${dsid}
 
 for jobid in {1..10}

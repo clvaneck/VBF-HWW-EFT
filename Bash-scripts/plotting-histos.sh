@@ -18,5 +18,3 @@ cd ${OUTPUTDIR}
 # You can plot as many histograms you want on the same graph, just be careful to give them the same name in the rivet.RunName command in the Rivet job option.
 make-plots *dat # Make plots out of the data file create with the rivet-cmphistos command
 pdfjoin -o combined_plots_name.pdf *.pdf # Combines all the plots in one pdf file
-
-/Users/casparvaneck/Documents/GitHub/VBF-HWW-EFT/Rivet-Analysis/MY_ANALYSIS/MY_ANALYSIS.plot
