@@ -1,8 +1,7 @@
-##100006 ctp
+##This job option is the SM one with all EFT operators set to 0
 
 from MadGraphControl.MadGraphUtils import *
 from MadGraphControl.MadGraph_NNPDF30NLO_Base_Fragment import *
-
 
 #----------------------------------------------------------------------------
 # Random Seed
@@ -24,15 +23,16 @@ else:
 safefactor=1.2
 if hasattr(runArgs,'maxEvents') and runArgs.maxEvents > 0:  nevents = int(runArgs.maxEvents)*safefactor
 else: nevents = nevents*safefactor
+
 process="""
 import model /project/atlas/users/cvaneck/VBF-HWW-EFT/Madgraph/model/SMEFTatNLO
 define p = g u u~ d d~ s s~ c c~ b b~
 define q = u u~ d d~ s s~ c c~ b b~
 define j = g u u~ d d~ s s~ c c~ b b~
-generate p p > h q q NP^2==4 QED=4 QCD=0
+generate p p > h q q QED=4 QCD=0
 output -f"""
 
-process_dir = new_process(process,keepJpegs=True, usePMGSettings=False)
+process_dir = new_process(process)
 
 #Fetch default LO run_card.dat and set parameters
 settings = {'lhe_version' : '3.0',
@@ -87,11 +87,11 @@ c_dim6={'2': '0', '3' : '0', '4' : '0', '5' : '0', '6' : '0','9' : '0', '10' : '
 # 14 # cpu = 0
 # 15 # cpt = 0
 # 16 # cpd = 0
-# 19 # ctp = 1
+# 19 # ctp = 0
 # 22 # ctZ = 0
 # 23 # ctW = 0
 # 24 # ctG = 0
-c_dim62f={'1' : '0', '2' : '0', '3' : '0', '4' : '0', '5' : '0', '6' : '0', '7' : '0', '8' : '0', '9' : '0', '10' : '0', '11' : '0', '12' : '0', '13' : '0', '14' : '0', '15' : '0', '16' : '0', '19' : '1', '22' : '0', '23' : '0', '24' : '0'} 
+c_dim62f={'1' : '0', '2' : '0', '3' : '0', '4' : '0', '5' : '0', '6' : '0', '7' : '0', '8' : '0', '9' : '0', '10' : '0', '11' : '0', '12' : '0', '13' : '0', '14' : '0', '15' : '0', '16' : '0', '19' : '0', '22' : '0', '23' : '0', '24' : '0'} 
 
 ## Block dim64f
 # 1 # cQq83 = 0
