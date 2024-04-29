@@ -13,7 +13,7 @@ cd ..
 JOname="aMC_gg_H"
 DATADIR=/project/atlas/users/cvaneck/VBF-HWW-EFT/Process/run-${dsid}
 
-for jobid in {1..10}
+for jobid in {1..2}
 do
 mkdir -p ${DATADIR}/${dsid}/${dsid}.${jobid}
 cd ${DATADIR}/${dsid}/${dsid}.${jobid}

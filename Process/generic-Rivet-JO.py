@@ -9,7 +9,7 @@ theApp.EvtMax = -1
 import AthenaPoolCnvSvc.ReadAthenaPool
 
 # POINT TO YOR FILES HERE, in my case I stored all my EVNT files in dcache because it's the fastest way to access them
-input = glob.glob('/dcache/atlas/higgs/smugnier/SampleGeneration/Processes/HWWOffshellEFT-ggF/dsid/EVNT/*.EVNT.*.ROOT')
+input = glob.glob('/project/atlas/users/cvaneck/VBF-HWW-EFT/Process/HWW/100004-i-or-q/EVNT/100004.EVNT.ROOT')
 svcMgr.EventSelector.InputCollections = input
 svcMgr += CfgMgr.AthenaEventLoopMgr(EventPrintoutInterval=100)
 svcMgr.MessageSvc.OutputLevel = INFO
@@ -22,7 +22,7 @@ from Rivet_i.Rivet_iConf import Rivet_i
 rivet = Rivet_i()
 import os
 # Here you should give the path to your analysis, which is the compile C++ code that will compute histograms out of the events that you gave it.
-rivet.AnalysisPath = '/project/atlas/users/smugnier/RivetAnalysis/MY_ANALYSIS'
+rivet.AnalysisPath = '/project/atlas/users/cvaneck/VBF-HWW-EFT/Rivet-Analysis/MY_ANALYSIS'
 # Here you give the name of the analysis you will use
 rivet.Analyses += ['MY_ANALYSIS']
 rivet.RunName = 'HWWOffshell'

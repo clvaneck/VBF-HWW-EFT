@@ -25,7 +25,7 @@ if hasattr(runArgs,'maxEvents') and runArgs.maxEvents > 0:  nevents = int(runArg
 else: nevents = nevents*safefactor
 
 process="""
-import model /project/atlas/users/cvaneck/VBF-HWW-EFT/Madgraph/model/SMEFTatNLO-NLO
+import model /project/atlas/users/cvaneck/VBF-HWW-EFT/Madgraph/model/SMEFTatNLO
 define p = g u u~ d d~ s s~ c c~ b b~
 define q = u u~ d d~ s s~ c c~ b b~
 define j = g u u~ d d~ s s~ c c~ b b~
