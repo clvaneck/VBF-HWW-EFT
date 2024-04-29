@@ -7,7 +7,7 @@ setupATLAS
 asetup 21.6.77,AthGeneration # or later (please avoid 21.6.19-21.6.32)
 source setupRivet.sh
 
-athena /project/atlas/users/smugnier/RivetRoutine/HWWOffshell_test_ana/JO/HWW_ATLAS_JO_x.py
+athena /project/atlas/users/cvaneck/SampleGeneration/Process/generic-Rivet-JO.py
 
 # here you should put the path to your Rivet job option, I advise you to nicely organise your folders in order to avoid any confusion.
 # The Rivet job option is the file that contains the Rivet analysis you want to run.
