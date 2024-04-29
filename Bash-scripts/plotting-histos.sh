@@ -1,5 +1,5 @@
 
-OUTPUTDIR=/project/atlas/users/cvaneck/SampleGeneration/Process/plots #Here you have to pick the output directory of your plot
+OUTPUTDIR=/project/atlas/users/smugnier/RivetRoutine/HWWOffshell_test_ana/Plots/Plots-S-c_EFT #Here you have to pick the output directory of your plot
 
 
 # Before running the following line, make sur that you did
@@ -8,8 +8,9 @@ OUTPUTDIR=/project/atlas/users/cvaneck/SampleGeneration/Process/plots #Here you 
 # source setupRivet.sh
 # to have access to the rivet commands
 
-rivet-cmphistos /project/atlas/users/cvaneck/SampleGeneration/Process/HWW_ATLAS.yoda.gz:"Title=$ qq \rightarrow H \rightarrow WW, S$:DefaultWeight=Default:Variations=none" \
-           --config /project/atlas/users/cvaneck/sacha_repo/HWW-EFT-Interpretation/Rivet-Analysis/MY_ANALYSIS/MY_ANALYSIS.plot \
+rivet-cmphistos /project/atlas/users/smugnier/RivetRoutine/HWWOffshell_test_ana/run-DSID/histogram1.yoda:"Title=$ gg \rightarrow H \rightarrow WW, S$:DefaultWeight=Default:Variations=none" \
+                /project/atlas/users/smugnier/RivetRoutine/HWWOffshell_test_ana/run-DSID2/histogram2.yoda:"Title= S +  lin. EFT:DefaultWeight=Default:Variations=none" \
+           --config /project/atlas/users/smugnier/RivetAnalysis/MY_ANALYSIS/MY_ANALYSIS.plot \
            --outdir ${OUTPUTDIR} \
            --errs
 
