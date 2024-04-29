@@ -6,65 +6,70 @@ ShowZero=0
 
 # END PLOT
 
-
 BEGIN PLOT .*/MY_ANALYSIS/Ptll.*
-Title=Dilepton Transverse momentum, $c_{tG}=1$
+Title=Dilepton Transverse Momentum
 XLabel=$p_{T}^{ll}$ [GeV]
-YLabel=$\frac{\mathrm{d}\sigma}{\mathrm{d}p_{T}^{ll}}$
-
-
+YLabel=$\frac{\mathrm{d}\sigma}{\mathrm{d}p_{T}^{ll}}$ [1/GeV]
 END PLOT
 
 BEGIN PLOT .*/MY_ANALYSIS/M_T.*
-Title=Transverse mass, $c_{tG}=1$
-XLabel=$m^{\ell\nu\ell\nu}_{T}$ [GeV]
-YLabel=$\frac{\mathrm{d}\sigma}{\mathrm{d}m_{\ell\nu\ell\nu}^{T}}$
-
-
+Title=Transverse Mass of the Dilepton and Neutrinos System
+XLabel=$m_{T}^{\ell\nu\ell\nu}$ [GeV]
+YLabel=$\frac{\mathrm{d}\sigma}{\mathrm{d}m_{T}^{\ell\nu\ell\nu}}$ [1/GeV]
 END PLOT
 
 BEGIN PLOT .*/MY_ANALYSIS/m_ll.*
-Title=Invariant mass of the leptons, $c_{tG}=1$
+Title=Invariant Mass of the Leptons
 XLabel=$m_{\ell\ell}$ [GeV]
-YLabel=$\frac{\mathrm{d}\sigma}{\mathrm{d}m_{\ell\ell}}$
-
-
+YLabel=$\frac{\mathrm{d}\sigma}{\mathrm{d}m_{\ell\ell}}$ [1/GeV]
 END PLOT
 
 BEGIN PLOT .*/MY_ANALYSIS/m_WW.*
-Title=Invariant mass of the WW, $c_{tG}=1$
+Title=Invariant Mass of the WW System
 XLabel=$m_{WW}$ [GeV]
-YLabel=$\frac{\mathrm{d}\sigma}{\mathrm{d}m_{WW}}$
-
-
+YLabel=$\frac{\mathrm{d}\sigma}{\mathrm{d}m_{WW}}$ [1/GeV]
 END PLOT
 
 BEGIN PLOT .*/MY_ANALYSIS/DEta.*
-Title=Pseudorapidity of the dilepton system, $c_{tG}=1$
-XLabel=$\Delta\eta_{\ell\ell}$ [GeV]
+Title=Difference in Pseudorapidity Between Leptons
+XLabel=$\Delta\eta_{\ell\ell}$
 YLabel=$\frac{\mathrm{d}\sigma}{\mathrm{d}\Delta\eta_{\ell\ell}}$
-
 END PLOT
 
 BEGIN PLOT .*/MY_ANALYSIS/DPhi.*
-Title=Azimutal angle of the dilepton system, $c_{tG}=1$
-XLabel=$\Delta\phi_{\ell\ell}$ [GeV]
+Title=Difference in Azimuthal Angle Between Leptons
+XLabel=$\Delta\phi_{\ell\ell}$
 YLabel=$\frac{\mathrm{d}\sigma}{\mathrm{d}\Delta\phi_{\ell\ell}}$
-
 END PLOT
 
 BEGIN PLOT .*/MY_ANALYSIS/DR.*
-Title=Rapidity of the dilepton system, $c_{tG}=1$
-XLabel=$\Delta R_{\ell\ell}$ [GeV]
+Title=Distance in Rapidity-Azimuth Plane Between Leptons
+XLabel=$\Delta R_{\ell\ell}$
 YLabel=$\frac{\mathrm{d}\sigma}{\mathrm{d}\Delta R_{\ell\ell}}$
-
 END PLOT
 
 BEGIN PLOT .*/MY_ANALYSIS/V_x.*
-Title=$V_x$ parameter with $x=0.3$, $c_{tG}=1$
-XLabel=$V_{x=0,3}$ [GeV]
-YLabel=$\frac{\mathrm{d}\sigma}{\mathrm{d}V_x}$
-
-
+Title=$V_x$ Parameter with $x=0.3$
+XLabel=$V_{x=0.3}$ [GeV]
+YLabel=$\frac{\mathrm{d}\sigma}{\mathrm{d}V_x}$ [1/GeV]
 END PLOT
+
+BEGIN PLOT .*/MY_ANALYSIS/First_Jet_Pt.*
+Title=Transverse Momentum of the Leading Jet
+XLabel=$p_T^{jet1}$ [GeV]
+YLabel=$\frac{\mathrm{d}\sigma}{\mathrm{d}p_T^{jet1}}$ [1/GeV]
+END PLOT
+
+BEGIN PLOT .*/MY_ANALYSIS/Second_Jet_Pt.*
+Title=Transverse Momentum of the Second Leading Jet
+XLabel=$p_T^{jet2}$ [GeV]
+YLabel=$\frac{\mathrm{d}\sigma}{\mathrm{d}p_T^{jet2}}$ [1/GeV]
+END PLOT
+
+BEGIN PLOT .*/MY_ANALYSIS/HT.*
+Title=Scalar Sum of Jet Transverse Momenta
+XLabel=$H_T$ [GeV]
+YLabel=$\frac{\mathrm{d}\sigma}{\mathrm{d}H_T}$ [1/GeV]
+END PLOT
+
 
