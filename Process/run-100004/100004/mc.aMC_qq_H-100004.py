@@ -25,12 +25,11 @@ if hasattr(runArgs,'maxEvents') and runArgs.maxEvents > 0:  nevents = int(runArg
 else: nevents = nevents*safefactor
 
 process="""
-set complex_mass_scheme True
-set max_npoint_for_channel 4
-define p = g u c d s b u~ c~ d~ s~ b~
-define j = g u c d s b u~ c~ d~ s~ b~
-import model /project/atlas/users/smugnier/MG5_aMC_v3_5_1/models/SMEFTatNLO-NLO
-generate g g > h > l+ l- vl vl~ /z a  QCD=2 QED=4 [QCD]
+import model /project/atlas/users/cvaneck/VBF-HWW-EFT/Madgraph/model/SMEFTatNLO-NLO
+define p = g u u~ d d~ s s~ c c~ b b~
+define q = u u~ d d~ s s~ c c~ b b~
+define j = g u u~ d d~ s s~ c c~ b b~
+generate p p > h q q QED=4 QCD=0
 output -f"""
 
 process_dir = new_process(process)
