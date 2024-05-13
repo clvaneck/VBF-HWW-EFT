@@ -32,12 +32,12 @@ import model /project/atlas/users/cvaneck/VBF-HWW-EFT/Madgraph/model/SMEFTatNLO-
 define p = g u c d s b u~ c~ d~ s~ b~
 define j = g u c d s b u~ c~ d~ s~ b~
 define top = t t~
-generate      p p > h > j j e- ve~ mu+ vm     QCD=0 QED==6 NPall=0 / top
-add process   p p > h > j j e+ ve  mu- vm~    QCD=0 QED==6 NPall=0 / top
-add process   p p > h > j j ta- vt~ mu+ vm    QCD=0 QED==6 NPall=0 / top
-add process   p p > h > j j ta+ vt  mu- vm~   QCD=0 QED==6 NPall=0 / top
-add process   p p > h > j j ta- vt~ e+ ve     QCD=0 QED==6 NPall=0 / top
-add process   p p > h > j j ta+ vt  e- ve~    QCD=0 QED==6 NPall=0 / top
+generate      p p > h > j j e- ve~ mu+ vm     QCD=0 QED==6 / top
+add process   p p > h > j j e+ ve  mu- vm~    QCD=0 QED==6 / top
+add process   p p > h > j j ta- vt~ mu+ vm    QCD=0 QED==6 / top
+add process   p p > h > j j ta+ vt  mu- vm~   QCD=0 QED==6 / top
+add process   p p > h > j j ta- vt~ e+ ve     QCD=0 QED==6 / top
+add process   p p > h > j j ta+ vt  e- ve~    QCD=0 QED==6 / top
 output -f"""
 
 process_dir = new_process(process)
