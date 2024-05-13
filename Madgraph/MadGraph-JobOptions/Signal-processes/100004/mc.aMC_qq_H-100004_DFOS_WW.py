@@ -1,8 +1,7 @@
-##100006 ctp
+##This job option is the SM one with all EFT operators set to 0
 
 from MadGraphControl.MadGraphUtils import *
 from MadGraphControl.MadGraph_NNPDF30NLO_Base_Fragment import *
-
 
 #----------------------------------------------------------------------------
 # Random Seed
@@ -24,16 +23,26 @@ else:
 safefactor=1.2
 if hasattr(runArgs,'maxEvents') and runArgs.maxEvents > 0:  nevents = int(runArgs.maxEvents)*safefactor
 else: nevents = nevents*safefactor
+
 process="""
 set complex_mass_scheme True
 set max_npoint_for_channel 4
+set zerowidth_tchannel False
+import model /project/atlas/users/cvaneck/VBF-HWW-EFT/Madgraph/model/SMEFTatNLO-NLO
 define p = g u c d s b u~ c~ d~ s~ b~
 define j = g u c d s b u~ c~ d~ s~ b~
-import model /project/atlas/users/smugnier/MG5_aMC_v3_5_1/models/SMEFTatNLO-NLO
-generate g g > h > l+ l- vl vl~ /z a  NP^2==4 QCD=2 QED=4 [QCD]
+define top = t t~
+generate      p p > h > j j e- ve~ mu+ vm     QCD=0 QED==6 NPall=0 / top
+add process   p p > h > j j e+ ve  mu- vm~    QCD=0 QED==6 NPall=0 / top
+add process   p p > h > j j ta- vt~ mu+ vm    QCD=0 QED==6 NPall=0 / top
+add process   p p > h > j j ta+ vt  mu- vm~   QCD=0 QED==6 NPall=0 / top
+add process   p p > h > j j ta- vt~ e+ ve     QCD=0 QED==6 NPall=0 / top
+add process   p p > h > j j ta+ vt  e- ve~    QCD=0 QED==6 NPall=0 / top
 output -f"""
 
-process_dir = new_process(process,keepJpegs=True, usePMGSettings=False)
+
+
+process_dir = new_process(process)
 
 #Fetch default LO run_card.dat and set parameters
 settings = {'lhe_version' : '3.0',
@@ -88,11 +97,11 @@ c_dim6={'2': '0', '3' : '0', '4' : '0', '5' : '0', '6' : '0','9' : '0', '10' : '
 # 14 # cpu = 0
 # 15 # cpt = 0
 # 16 # cpd = 0
-# 19 # ctp = 1
+# 19 # ctp = 0
 # 22 # ctZ = 0
 # 23 # ctW = 0
 # 24 # ctG = 0
-c_dim62f={'1' : '0', '2' : '0', '3' : '0', '4' : '0', '5' : '0', '6' : '0', '7' : '0', '8' : '0', '9' : '0', '10' : '0', '11' : '0', '12' : '0', '13' : '0', '14' : '0', '15' : '0', '16' : '0', '19' : '1', '22' : '0', '23' : '0', '24' : '0'} 
+c_dim62f={'1' : '0', '2' : '0', '3' : '0', '4' : '0', '5' : '0', '6' : '0', '7' : '0', '8' : '0', '9' : '0', '10' : '0', '11' : '0', '12' : '0', '13' : '0', '14' : '0', '15' : '0', '16' : '0', '19' : '0', '22' : '0', '23' : '0', '24' : '0'} 
 
 ## Block dim64f
 # 1 # cQq83 = 0

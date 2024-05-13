@@ -25,12 +25,20 @@ if hasattr(runArgs,'maxEvents') and runArgs.maxEvents > 0:  nevents = int(runArg
 else: nevents = nevents*safefactor
 
 process="""
-import model /project/atlas/users/cvaneck/VBF-HWW-EFT/Madgraph/model/SMEFTatNLO
-define p = g u u~ d d~ s s~ c c~ b b~
-define q = u u~ d d~ s s~ c c~ b b~
-define j = g u u~ d d~ s s~ c c~ b b~
-generate p p > h q q QED=4 QCD=0
+set complex_mass_scheme True
+set max_npoint_for_channel 4
+set zerowidth_tchannel False
+import model /project/atlas/users/cvaneck/VBF-HWW-EFT/Madgraph/model/SMEFTatNLO-NLO
+define p = g u c d s b u~ c~ d~ s~ b~
+define j = g u c d s b u~ c~ d~ s~ b~
+define top = t t~
+Generate      p p > h > j j e+ ve  e- ve~           QCD=0 QED==6 NPall=0 / top
+add process   p p > h > j j mu+ vm  mu- vm~         QCD=0 QED==6 NPall=0 / top
+add process   p p > h > j j ta+ vt  ta- vt~         QCD=0 QED==6 NPall=0 / top
+
 output -f"""
+
+
 
 process_dir = new_process(process)
 
