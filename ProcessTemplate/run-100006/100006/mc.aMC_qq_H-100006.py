@@ -27,10 +27,17 @@ else: nevents = nevents*safefactor
 process="""
 set complex_mass_scheme True
 set max_npoint_for_channel 4
+set zerowidth_tchannel False
+import model /project/atlas/users/cvaneck/VBF-HWW-EFT/Madgraph/model/SMEFTatNLO-NLO
 define p = g u c d s b u~ c~ d~ s~ b~
 define j = g u c d s b u~ c~ d~ s~ b~
-import model /project/atlas/users/smugnier/MG5_aMC_v3_5_1/models/SMEFTatNLO-NLO
-generate g g > h > l+ l- vl vl~ /z a  NP^2==2 QCD=2 QED=4 [QCD]
+define top = t t~
+generate      p p > h > j j e- ve~ mu+ vm    NP=2 QCD=0 QED=6 / top
+add process   p p > h > j j e+ ve  mu- vm~   NP=2 QCD=0 QED=6 / top
+add process   p p > h > j j ta- vt~ mu+ vm   NP=2 QCD=0 QED=6 / top
+add process   p p > h > j j ta+ vt  mu- vm~  NP=2 QCD=0 QED=6 / top
+add process   p p > h > j j ta- vt~ e+ ve    NP=2 QCD=0 QED=6 / top
+add process   p p > h > j j ta+ vt  e- ve~   NP=2 QCD=0 QED=6 / top
 output -f"""
 
 process_dir = new_process(process,keepJpegs=True, usePMGSettings=False)
