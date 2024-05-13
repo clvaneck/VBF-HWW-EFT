@@ -1,7 +1,8 @@
-##This job option is the SM one with all EFT operators set to 0
+##100006 ctp
 
 from MadGraphControl.MadGraphUtils import *
 from MadGraphControl.MadGraph_NNPDF30NLO_Base_Fragment import *
+
 
 #----------------------------------------------------------------------------
 # Random Seed
@@ -23,7 +24,6 @@ else:
 safefactor=1.2
 if hasattr(runArgs,'maxEvents') and runArgs.maxEvents > 0:  nevents = int(runArgs.maxEvents)*safefactor
 else: nevents = nevents*safefactor
-
 process="""
 set complex_mass_scheme True
 set max_npoint_for_channel 4
@@ -32,15 +32,15 @@ import model /project/atlas/users/cvaneck/VBF-HWW-EFT/Madgraph/model/SMEFTatNLO-
 define p = g u c d s b u~ c~ d~ s~ b~
 define j = g u c d s b u~ c~ d~ s~ b~
 define top = t t~
-Generate      p p > h > j j e+ ve  e- ve~           QCD=0 QED==6 / top
-add process   p p > h > j j mu+ vm  mu- vm~         QCD=0 QED==6 / top
-add process   p p > h > j j ta+ vt  ta- vt~         QCD=0 QED==6 / top
-
+generate      p p > h > j j e- ve~ mu+ vm    NP=2 QCD=0 QED=6 / top
+add process   p p > h > j j e+ ve  mu- vm~   NP=2 QCD=0 QED=6 / top
+add process   p p > h > j j ta- vt~ mu+ vm   NP=2 QCD=0 QED=6 / top
+add process   p p > h > j j ta+ vt  mu- vm~  NP=2 QCD=0 QED=6 / top
+add process   p p > h > j j ta- vt~ e+ ve    NP=2 QCD=0 QED=6 / top
+add process   p p > h > j j ta+ vt  e- ve~   NP=2 QCD=0 QED=6 / top
 output -f"""
 
-
-
-process_dir = new_process(process)
+process_dir = new_process(process,keepJpegs=True, usePMGSettings=False)
 
 #Fetch default LO run_card.dat and set parameters
 settings = {'lhe_version' : '3.0',
@@ -73,10 +73,10 @@ params={}
 # 4 # cdp = 0
 # 5 # cp = 0
 # 6 # cWWW = 0
-# 9 # cpW = 0
+# 9 # cpW = 1
 # 10 # cpBB = 0
 
-c_dim6={'2': '0', '3' : '0', '4' : '0', '5' : '0', '6' : '0','9' : '0', '10' : '0'} 
+c_dim6={'2': '0', '3' : '0', '4' : '0', '5' : '0', '6' : '0','9' : '1', '10' : '0'} 
 
 ## Block dim62f
 # 1 # cpl1 = 0
