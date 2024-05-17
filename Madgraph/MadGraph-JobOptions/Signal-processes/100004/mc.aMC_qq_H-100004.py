@@ -1,4 +1,4 @@
-##100006 ctp
+##This job option is the SM one with all EFT operators set to 0
 
 from MadGraphControl.MadGraphUtils import *
 from MadGraphControl.MadGraph_NNPDF30NLO_Base_Fragment import *
@@ -32,15 +32,15 @@ import model /project/atlas/users/cvaneck/VBF-HWW-EFT/Madgraph/model/SMEFTatNLO-
 define p = g u c d s b u~ c~ d~ s~ b~
 define j = g u c d s b u~ c~ d~ s~ b~
 define top = t t~
-generate      p p > h > j j e- ve~ mu+ vm     	NP=2 QCD=0 QED==6 / top
-add process   p p > h > j j e+ ve  mu- vm~    	NP=2 QCD=0 QED==6 / top
-add process   p p > h > j j e+ ve  e- ve~       NP=2 QCD=0 QED==6 / top
-add process   p p > h > j j mu+ vm  mu- vm~   	NP=2 QCD=0 QED==6 / top
+generate      p p > h > j j e- ve~ mu+ vm     	NP=0 QCD=0 QED==6 / top
+add process   p p > h > j j e+ ve  mu- vm~    	NP=0 QCD=0 QED==6 / top
+add process   p p > h > j j e+ ve  e- ve~       NP=0 QCD=0 QED==6 / top
+add process   p p > h > j j mu+ vm  mu- vm~   	NP=0 QCD=0 QED==6 / top
 
 output -f"""
 
 
-process_dir = new_process(process,keepJpegs=True, usePMGSettings=False)
+process_dir = new_process(process)
 
 #Fetch default LO run_card.dat and set parameters
 settings = {'lhe_version' : '3.0',
@@ -65,6 +65,7 @@ settings = {'lhe_version' : '3.0',
             'dynamical_scale_choice' : '3', #default value
             'beamEnergy':beamEnergy,
             'nevents'      : int(nevents)}
+
 modify_run_card(process_dir=process_dir,runArgs=runArgs,settings=settings)
 
 #---------------------------------------------------------------------------
@@ -79,10 +80,10 @@ params={}
 # 4 # cdp = 1e-8
 # 5 # cp = 1e-8
 # 6 # cWWW = 1e-8
-# 9 # cpW = 1
+# 9 # cpW = 1e-8
 # 10 # cpBB = 1e-8
 
-c_dim6={'2': '1e-8', '3' : '1e-8', '4' : '1e-8', '5' : '1e-8', '6' : '1e-8','9' : '1', '10' : '1e-8'} 
+c_dim6={'2': '1e-8', '3' : '1e-8', '4' : '1e-8', '5' : '1e-8', '6' : '1e-8','9' : '1e-8', '10' : '1e-8'} 
 
 ## Block dim62f
 # 1 # cpl1 = 1e-8
