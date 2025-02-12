@@ -28,15 +28,14 @@ process="""
 set complex_mass_scheme True
 set max_npoint_for_channel 4
 set zerowidth_tchannel False
-import model /project/atlas/users/cvaneck/VBF-HWW-EFT/Madgraph/model/SMEFTatNLO-NLO
+import model SMEFTatNLO-NLO
 define p = g u c d s b u~ c~ d~ s~ b~
 define j = g u c d s b u~ c~ d~ s~ b~
 define top = t t~
-generate      p p > h > j j e- ve~ mu+ vm     	NP=0 QCD=0 QED==6 / top
-add process   p p > h > j j e+ ve  mu- vm~    	NP=0 QCD=0 QED==6 / top
-add process   p p > h > j j e+ ve  e- ve~       NP=0 QCD=0 QED==6 / top
-add process   p p > h > j j mu+ vm  mu- vm~   	NP=0 QCD=0 QED==6 / top
-
+generate p p > h > j j e- ve~ mu+ vm $$ z NP=0 QCD=0 QED==6 / top
+add process p p > h > j j e+ ve mu- vm~ $$ z NP=0 QCD=0 QED==6 / top
+add process p p > h > j j e+ ve e- ve~ $$ z NP=0 QCD=0 QED==6 / top
+add process p p > h > j j mu+ vm mu- vm~ $$ z NP=0 QCD=0 QED==6 / top
 output -f"""
 
 

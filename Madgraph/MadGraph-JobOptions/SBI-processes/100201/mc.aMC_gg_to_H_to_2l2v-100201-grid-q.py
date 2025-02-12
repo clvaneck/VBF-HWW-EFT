@@ -1,7 +1,21 @@
-##100006 ctp
+##This job option is the background only generation with EFTs=0
+##dsid = 100100
 
 from MadGraphControl.MadGraphUtils import *
 from MadGraphControl.MadGraph_NNPDF30NLO_Base_Fragment import *
+
+gridpack_mode=True
+saveRundetails=True
+runPythia=False
+if is_gen_from_gridpack():
+    saveRundetails = False
+    runPythia=True
+
+
+if is_gen_from_gridpack():
+    print("Generating from Gridpack, doing so serially")
+else: 
+    os.environ["ATHENA_PROC_NUMBER"] = "16"
 
 #----------------------------------------------------------------------------
 # Random Seed
@@ -28,19 +42,15 @@ process="""
 set complex_mass_scheme True
 set max_npoint_for_channel 4
 set zerowidth_tchannel False
-import model /project/atlas/users/cvaneck/VBF-HWW-EFT/Madgraph/model/SMEFTatNLO-NLO
+import model SMEFTatNLO-NLO
 define p = g u c d s b u~ c~ d~ s~ b~
 define j = g u c d s b u~ c~ d~ s~ b~
 define top = t t~
-generate      p p > h > j j e- ve~ mu+ vm     	NP=2 QCD=0 QED==6 / top
-add process   p p > h > j j e+ ve  mu- vm~    	NP=2 QCD=0 QED==6 / top
-add process   p p > h > j j e+ ve  e- ve~       NP=2 QCD=0 QED==6 / top
-add process   p p > h > j j mu+ vm  mu- vm~   	NP=2 QCD=0 QED==6 / top
-
+generate p p > j j e- ve~ mu+ vm $$ z NP^2==4 QCD=0 QED==6 / top
 output -f"""
 
 
-process_dir = new_process(process,keepJpegs=True, usePMGSettings=False)
+process_dir = new_process(process)
 
 #Fetch default LO run_card.dat and set parameters
 settings = {'lhe_version' : '3.0',
@@ -65,6 +75,7 @@ settings = {'lhe_version' : '3.0',
             'dynamical_scale_choice' : '3', #default value
             'beamEnergy':beamEnergy,
             'nevents'      : int(nevents)}
+
 modify_run_card(process_dir=process_dir,runArgs=runArgs,settings=settings)
 
 #---------------------------------------------------------------------------
@@ -187,4 +198,3 @@ evgenConfig.keywords+=['Higgs','2lepton', 'WW']
 
 include("Pythia8_i/Pythia8_A14_NNPDF23LO_EvtGen_Common.py")
 include("Pythia8_i/Pythia8_MadGraph.py")
-

@@ -46,7 +46,7 @@ import model SMEFTatNLO-NLO
 define p = g u c d s b u~ c~ d~ s~ b~
 define j = g u c d s b u~ c~ d~ s~ b~
 define top = t t~
-generate p p > j j e- ve~ mu+ vm $$ z NP=0 QCD=0 QED==6 / top h
+generate p p > j j e- ve~ mu+ vm $$ z NP=0 QCD=0 QED==6 / top
 output -f"""
 
 

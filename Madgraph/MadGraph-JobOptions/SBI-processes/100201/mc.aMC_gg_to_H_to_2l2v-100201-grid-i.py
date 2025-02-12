@@ -46,7 +46,7 @@ import model SMEFTatNLO-NLO
 define p = g u c d s b u~ c~ d~ s~ b~
 define j = g u c d s b u~ c~ d~ s~ b~
 define top = t t~
-generate p p > j j e- ve~ mu+ vm $$ z NP=0 QCD=0 QED==6 / top h
+generate p p > j j e- ve~ mu+ vm $$ z NP^2==2 QCD=0 QED==6 / top
 output -f"""
 
 
@@ -90,10 +90,10 @@ params={}
 # 4 # cdp = 1e-8
 # 5 # cp = 1e-8
 # 6 # cWWW = 1e-8
-# 9 # cpW = 1e-8
+# 9 # cpW = 1
 # 10 # cpBB = 1e-8
 
-c_dim6={'2': '1e-8', '3' : '1e-8', '4' : '1e-8', '5' : '1e-8', '6' : '1e-8','9' : '1e-8', '10' : '1e-8'} 
+c_dim6={'2': '1e-8', '3' : '1e-8', '4' : '1e-8', '5' : '1e-8', '6' : '1e-8','9' : '1', '10' : '1e-8'} 
 
 ## Block dim62f
 # 1 # cpl1 = 1e-8

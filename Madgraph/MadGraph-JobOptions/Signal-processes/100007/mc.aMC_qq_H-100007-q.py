@@ -1,21 +1,7 @@
-##This job option is the background only generation with EFTs=0
-##dsid = 100100
+##100006 ctp
 
 from MadGraphControl.MadGraphUtils import *
 from MadGraphControl.MadGraph_NNPDF30NLO_Base_Fragment import *
-
-gridpack_mode=True
-saveRundetails=True
-runPythia=False
-if is_gen_from_gridpack():
-    saveRundetails = False
-    runPythia=True
-
-
-if is_gen_from_gridpack():
-    print("Generating from Gridpack, doing so serially")
-else: 
-    os.environ["ATHENA_PROC_NUMBER"] = "16"
 
 #----------------------------------------------------------------------------
 # Random Seed
@@ -46,11 +32,14 @@ import model SMEFTatNLO-NLO
 define p = g u c d s b u~ c~ d~ s~ b~
 define j = g u c d s b u~ c~ d~ s~ b~
 define top = t t~
-generate p p > j j e- ve~ mu+ vm $$ z NP=0 QCD=0 QED==6 / top h
+generate p p > h > j j e- ve~ mu+ vm $$ z NP^2==4 QCD=0 QED==6 / top
+add process p p > h > j j e+ ve mu- vm~ $$ z NP^2==4 QCD=0 QED==6 / top
+add process p p > h > j j e+ ve e- ve~ $$ z NP^2==4 QCD=0 QED==6 / top
+add process p p > h > j j mu+ vm mu- vm~ $$ z NP^2==4 QCD=0 QED==6 / top
 output -f"""
 
 
-process_dir = new_process(process)
+process_dir = new_process(process,keepJpegs=True, usePMGSettings=False)
 
 #Fetch default LO run_card.dat and set parameters
 settings = {'lhe_version' : '3.0',
@@ -75,7 +64,6 @@ settings = {'lhe_version' : '3.0',
             'dynamical_scale_choice' : '3', #default value
             'beamEnergy':beamEnergy,
             'nevents'      : int(nevents)}
-
 modify_run_card(process_dir=process_dir,runArgs=runArgs,settings=settings)
 
 #---------------------------------------------------------------------------
@@ -90,10 +78,10 @@ params={}
 # 4 # cdp = 1e-8
 # 5 # cp = 1e-8
 # 6 # cWWW = 1e-8
-# 9 # cpW = 1e-8
+# 9 # cpW = 1
 # 10 # cpBB = 1e-8
 
-c_dim6={'2': '1e-8', '3' : '1e-8', '4' : '1e-8', '5' : '1e-8', '6' : '1e-8','9' : '1e-8', '10' : '1e-8'} 
+c_dim6={'2': '1e-8', '3' : '1e-8', '4' : '1e-8', '5' : '1e-8', '6' : '1e-8','9' : '1', '10' : '1e-8'} 
 
 ## Block dim62f
 # 1 # cpl1 = 1e-8
@@ -198,3 +186,4 @@ evgenConfig.keywords+=['Higgs','2lepton', 'WW']
 
 include("Pythia8_i/Pythia8_A14_NNPDF23LO_EvtGen_Common.py")
 include("Pythia8_i/Pythia8_MadGraph.py")
+
