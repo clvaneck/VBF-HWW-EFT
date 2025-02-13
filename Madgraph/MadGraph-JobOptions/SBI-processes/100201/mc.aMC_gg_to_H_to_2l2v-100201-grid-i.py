@@ -72,6 +72,7 @@ settings = {'lhe_version' : '3.0',
             'dral':0.1,
             'mmjj':10,
             'mmbb':10,
+            'mmnl':140,
             'dynamical_scale_choice' : '3', #default value
             'beamEnergy':beamEnergy,
             'nevents'      : int(nevents)}
